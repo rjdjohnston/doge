@@ -1,0 +1,18 @@
+{
+  "name": "cache-service",
+  "version": "1.0.0",
+  "description": "Cache service for eCFR",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0",
+    "redis": "^4.6.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+} 

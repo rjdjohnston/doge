@@ -1,0 +1,131 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      target: development
+    ports:
+      - "3002:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://localhost:3001/api
+      - API_GATEWAY_URL=http://api-gateway:3000  # For server-side requests
+    command: npm run dev
+    networks:
+      - ecfr-network
+
+  api-gateway:
+    build:
+      context: ./services/api-gateway
+      target: development
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./services/api-gateway:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - FRONTEND_URL=http://frontend:3000
+      - ADMIN_SERVICE_URL=http://admin-service:3006
+      - SEARCH_SERVICE_URL=http://search-service:3003
+      - VERSIONER_SERVICE_URL=http://versioner-service:3004
+      - CACHE_SERVICE_URL=http://cache-service:3001
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+      - frontend
+    command: npm run dev
+    networks:
+      - ecfr-network
+
+  search-service:
+    build:
+      context: ./services/search-service
+      target: development
+    volumes:
+      - ./services/search-service:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CACHE_SERVICE_URL=cache-service:3001
+      - API_BASE=https://www.ecfr.gov/api
+    depends_on:
+      - cache-service
+    command: npm run dev
+    networks:
+      - ecfr-network
+
+  versioner-service:
+    build:
+      context: ./services/versioner-service
+      target: development
+    ports:
+      - "3004:3004"
+    volumes:
+      - ./services/versioner-service:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CACHE_SERVICE_URL=cache-service:3001
+      - API_BASE=https://www.ecfr.gov/api
+      - PORT=3004
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:3004/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      - cache-service
+    command: npm run dev
+    networks:
+      - ecfr-network
+
+  cache-service:
+    build:
+      context: ./services/cache-service
+      target: development
+    volumes:
+      - ./services/cache-service:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - MONGODB_URI=mongodb://mongodb:27017/ecfr
+      - REDIS_HOST=redis
+    depends_on:
+      - mongodb
+      - redis
+    command: npm run dev
+    networks:
+      - ecfr-network
+
+  admin-service:
+    build:
+      context: ./services/admin-service
+      target: development
+    ports:
+      - "3006:3006"
+    volumes:
+      - ./services/admin-service:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3006
+      - API_BASE=https://www.ecfr.gov/api
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:3006/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    command: npm run dev
+    networks:
+      - ecfr-network
+
+networks:
+  ecfr-network:
+    driver: bridge 

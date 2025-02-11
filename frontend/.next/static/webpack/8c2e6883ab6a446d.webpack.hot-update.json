@@ -1,0 +1,1 @@
+{"c":["webpack"],"r":["pages/titles/[titleNumber]"],"m":["./components/TitleLayout.js","./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?absolutePagePath=%2Fapp%2Fpages%2Ftitles%2F%5BtitleNumber%5D%2Findex.js&page=%2Ftitles%2F%5BtitleNumber%5D!","./pages/titles/[titleNumber]/index.js"]}

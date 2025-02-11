@@ -1,0 +1,146 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      target: production
+    ports:
+      - "3002:3000"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - ecfr-network
+
+  api-gateway:
+    build:
+      context: ./services/api-gateway
+      target: production
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=production
+      - FRONTEND_URL=http://frontend:3000
+      - ADMIN_SERVICE_URL=http://admin-service:3006
+      - SEARCH_SERVICE_URL=http://search-service:3003
+      - VERSIONER_SERVICE_URL=http://versioner-service:3004
+      - CACHE_SERVICE_URL=http://cache-service:3001
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+    networks:
+      - ecfr-network
+
+  search-service:
+    build:
+      context: ./services/search-service
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - REDIS_HOST=redis
+      - MONGODB_URI=mongodb://mongodb:27017/ecfr
+      - PORT=3003
+      - API_BASE=https://www.ecfr.gov/api
+      - CACHE_SERVICE_URL=http://cache-service:3001
+    depends_on:
+      - redis
+      - mongodb
+    networks:
+      - ecfr-network
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:3003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  versioner-service:
+    build:
+      context: ./services/versioner-service
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - REDIS_HOST=redis
+      - MONGODB_URI=mongodb://mongodb:27017/ecfr
+      - PORT=3004
+      - API_BASE=https://www.ecfr.gov/api
+      - CACHE_SERVICE_URL=http://cache-service:3001
+    depends_on:
+      - redis
+      - mongodb
+    networks:
+      - ecfr-network
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:3004/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  cache-service:
+    build:
+      context: ./services/cache-service
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - REDIS_HOST=redis
+      - MONGODB_URI=mongodb://mongodb:27017/ecfr
+    depends_on:
+      - redis
+      - mongodb
+    networks:
+      - ecfr-network
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  redis:
+    image: redis:alpine
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - ecfr-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - ecfr-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')", "--quiet"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  admin-service:
+    build:
+      context: ./services/admin-service
+      target: production
+    environment:
+      - NODE_ENV=production
+      - PORT=3006
+      - API_BASE=https://www.ecfr.gov/api
+    networks:
+      - ecfr-network
+
+volumes:
+  redis-data:
+  mongodb-data:
+
+networks:
+  ecfr-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16 
