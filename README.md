@@ -54,12 +54,13 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 ```
 
 Services will be available at:
-- Frontend: http://localhost:3000
-- API Gateway: http://localhost:3000/api
-- Swagger Documentation: http://localhost:3000/api-docs
+- Agency service: http://localhost:3002
+- Search service: http://localhost:3003
+- Versioner service: http://localhost:3004
+- Cache service: http://localhost:3001
 
 ## Staging Deployment
-
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build
 Deploy to staging:
 ```bash
 ./scripts/deploy.sh staging
