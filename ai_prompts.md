@@ -1,3 +1,4 @@
+## Summary
 These are the initial prompts I used to get the code base setup. 
 One hour on prompts and 15 hours working through reqs and adjustments with AI. 
 Five hours manually on code and deployment
@@ -135,5 +136,5 @@ Once agency is clicked or selected, show list versioned titles available by date
 When click on title display show all ancestors clickable with versions, display all the subtitles, chapters, subchapters, par, subpart, section, display appendix. They should be displayed in expandable format to see the contents under. Make the other versions available through a dropdown that updates the page. 
 Provide word counts for each field. 
 
-## Summary
+## Cliff Notes
 AI is a great "tool" - It in no way will replace development, architecture, and experience. At least not for now
