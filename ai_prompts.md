@@ -129,10 +129,11 @@ The API gateway to route requests to the appropriate service
 Environment configuration files
 Service health check endpoints
 
-This section didn't work at all lol
+## This section didn't work at all lol
 
 Once agency is clicked or selected, show list versioned titles available by date with a total count, provide a summary of the title and total corrections for the title. 
 When click on title display show all ancestors clickable with versions, display all the subtitles, chapters, subchapters, par, subpart, section, display appendix. They should be displayed in expandable format to see the contents under. Make the other versions available through a dropdown that updates the page. 
 Provide word counts for each field. 
 
-# AI is a great "tool" - It in no way will replace development, architecture, and experience. At least not for now
+## Summary
+AI is a great "tool" - It in no way will replace development, architecture, and experience. At least not for now
