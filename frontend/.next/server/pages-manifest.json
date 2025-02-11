@@ -2,7 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/titles/[titleNumber]": "pages/titles/[titleNumber].js",
   "/": "pages/index.js",
-  "/agencies/[slug]": "pages/agencies/[slug].js"
+  "/agencies/[slug]": "pages/agencies/[slug].js",
+  "/titles/[titleNumber]": "pages/titles/[titleNumber].js"
 }
