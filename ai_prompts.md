@@ -47,7 +47,8 @@ params: query (string), agency_slugs (array[string]), date (string) format: YYYY
   "titles": {
     "32": 177
   }
-}```
+}
+```
 
 Search result counts by hierarchy
 https://www.ecfr.gov/api/search/v1/counts/hierarchy
