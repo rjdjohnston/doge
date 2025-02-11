@@ -114,7 +114,7 @@ Array of all sections and appendices inside a title
 https://www.ecfr.gov/api/versioner/v1/versions/title-{title}.json
 params: date (string) format: YYYY-MM-DD, title (string), subtitle (string) format: uppercase, chapter (string) format: roman numerals and digits, subchapter (string) format: uppercase requires: chapter, part (string), subpart (string) requires: part, section (string) requires: part, appendix (string) requires: subtitle, chapter, or part 
 
-
+## AI Prompt
 Create a modern microservice based web application. Use nodejs for the microservices. Each API will have its own service. Use mongodb as a cache store and database to query. Cache results for 5 hours. Search APIs if no data is available. The front end will be in modern react/nextjs. Use docker as containers for each service and application. For the front end, create a search section on top. Provide input field for text search, provide two date fields (to and from), these will be used and presented when applicable. To date is default date of all queries.
 On home display all agencies as clickable links and in drop down in search section.
 
