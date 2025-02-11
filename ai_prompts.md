@@ -117,12 +117,6 @@ params: date (string) format: YYYY-MM-DD, title (string), subtitle (string) form
 Create a modern microservice based web application. Use nodejs for the microservices. Each API will have its own service. Use mongodb as a cache store and database to query. Cache results for 5 hours. Search APIs if no data is available. The front end will be in modern react/nextjs. Use docker as containers for each service and application. For the front end, create a search section on top. Provide input field for text search, provide two date fields (to and from), these will be used and presented when applicable. To date is default date of all queries.
 On home display all agencies as clickable links and in drop down in search section.
 
-This section didn't work at all lol
-Once agency is clicked or selected, show list versioned titles available by date with a total count, provide a summary of the title and total corrections for the title. 
-When click on title display show all ancestors clickable with versions, display all the subtitles, chapters, subchapters, par, subpart, section, display appendix. They should be displayed in expandable format to see the contents under. Make the other versions available through a dropdown that updates the page. 
-Provide word counts for each field. 
-
-
 Create a startup script to query and cache all available data when the application is initally built
 
 The TitleDetails component with expandable sections
@@ -135,5 +129,10 @@ The API gateway to route requests to the appropriate service
 Environment configuration files
 Service health check endpoints
 
-AI is a great "tool" - It in no way will replace development, architecture, and experience. 
-At least not for now
+This section didn't work at all lol
+
+Once agency is clicked or selected, show list versioned titles available by date with a total count, provide a summary of the title and total corrections for the title. 
+When click on title display show all ancestors clickable with versions, display all the subtitles, chapters, subchapters, par, subpart, section, display appendix. They should be displayed in expandable format to see the contents under. Make the other versions available through a dropdown that updates the page. 
+Provide word counts for each field. 
+
+# AI is a great "tool" - It in no way will replace development, architecture, and experience. At least not for now
