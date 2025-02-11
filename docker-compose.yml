@@ -111,9 +111,13 @@ services:
       retries: 3
 
   mongodb:
-    image: mongo:latest
+    image: mongo:4.4.18
+    ports:
+      - "27017:27017"
     volumes:
-      - mongodb-data:/data/db
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=ecfr
     networks:
       - ecfr-network
     healthcheck:
@@ -135,7 +139,7 @@ services:
 
 volumes:
   redis-data:
-  mongodb-data:
+  mongodb_data:
 
 networks:
   ecfr-network:

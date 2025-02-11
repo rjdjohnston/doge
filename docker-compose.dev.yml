@@ -126,6 +126,15 @@ services:
     networks:
       - ecfr-network
 
+  mongodb:
+    image: mongo:4.4.18  # Same version for consistency
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=ecfr
+
 networks:
   ecfr-network:
     driver: bridge 
