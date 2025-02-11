@@ -1,11 +1,11 @@
-# These are the initial prompts I used to get the code base setup. 
-# One hour on prompts and 15 hours working through reqs and adjustments with AI
-# Five hours manually on code and deployment
+These are the initial prompts I used to get the code base setup. 
+One hour on prompts and 15 hours working through reqs and adjustments with AI
+Five hours manually on code and deployment
 
-# Could have done this manually without the architecture and design. I thought it was important to demonstrate
-# my knowledge in technical architure. With more time, I would have added a service layer with supporting 
-# discovery, monitoring, logging, and scale. 
-# I wanted to try and see how much I could get done with AI in the time alloted. Hopefully this is not viewed as a negative. 
+Could have done this manually without the architecture and design. I thought it was important to demonstrate
+my knowledge in technical architure. With more time, I would have added a service layer with supporting 
+discovery, monitoring, logging, and scale. 
+I wanted to try and see how much I could get done with AI in the time alloted. Hopefully this is not viewed as a negative. 
 
 ## Admin Endpoints
 
@@ -42,10 +42,11 @@ params: query (string), agency_slugs (array[string]), date (string) format: YYYY
 Search result count by title
 https://www.ecfr.gov/api/search/v1/counts/titles
 params: query (string), agency_slugs (array[string]), date (string) format: YYYY-MM-DD, last_modified_after (string) format: YYYY-MM-DD, last_modified_on_or_after (string) format: YYYY-MM-DD, last_modified_before (string) format: YYYY-MM-DD, last_modified_on_or_before (string) format: YYYY-MM-DD
-{
+```{
   "titles": {
     "32": 177
   }
+}```
 
 Search result counts by hierarchy
 https://www.ecfr.gov/api/search/v1/counts/hierarchy
@@ -68,7 +69,7 @@ params: date (string) format: YYYY-MM-DD, title (string), subtitle (string) form
 Structure JSON for a title
 https://www.ecfr.gov/api/versioner/v1/structure/{date}/title-{title}.json
 params: date (string) format: YYYY-MM-DD, title (string)
-`{
+```{
   "content_versions": [
     {
       "date": "2016-12-20",
@@ -82,12 +83,12 @@ params: date (string) format: YYYY-MM-DD, title (string)
       "subpart": null,
       "title": "32",
       "type": "section"
-    },`
+    },```
 
 Summary information on each title
 https://www.ecfr.gov/api/versioner/v1/titles.json
 params: none
-`{
+```{
   "titles": [
     {
       "number": 1,
@@ -96,7 +97,7 @@ params: none
       "latest_issue_date": "2024-05-17",
       "up_to_date_as_of": "2025-02-06",
       "reserved": false
-    },`
+    },```
 
 
 Array of all sections and appendices inside a title
@@ -107,11 +108,11 @@ params: date (string) format: YYYY-MM-DD, title (string), subtitle (string) form
 Create a modern microservice based web application. Use nodejs for the microservices. Each API will have its own service. Use mongodb as a cache store and database to query. Cache results for 5 hours. Search APIs if no data is available. The front end will be in modern react/nextjs. Use docker as containers for each service and application. For the front end, create a search section on top. Provide input field for text search, provide two date fields (to and from), these will be used and presented when applicable. To date is default date of all queries.
 On home display all agencies as clickable links and in drop down in search section.
 
-# This section didn't work at all lol
+This section didn't work at all lol
 Once agency is clicked or selected, show list versioned titles available by date with a total count, provide a summary of the title and total corrections for the title. 
 When click on title display show all ancestors clickable with versions, display all the subtitles, chapters, subchapters, par, subpart, section, display appendix. They should be displayed in expandable format to see the contents under. Make the other versions available through a dropdown that updates the page. 
 Provide word counts for each field. 
-#
+
 
 Create a startup script to query and cache all available data when the application is initally built
 
@@ -125,5 +126,5 @@ The API gateway to route requests to the appropriate service
 Environment configuration files
 Service health check endpoints
 
-# AI is a great "tool" - It in no way will replace development, architecture, and experience. 
-# At least not for now
+AI is a great "tool" - It in no way will replace development, architecture, and experience. 
+At least not for now
