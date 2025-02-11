@@ -42,7 +42,8 @@ params: query (string), agency_slugs (array[string]), date (string) format: YYYY
 Search result count by title
 https://www.ecfr.gov/api/search/v1/counts/titles
 params: query (string), agency_slugs (array[string]), date (string) format: YYYY-MM-DD, last_modified_after (string) format: YYYY-MM-DD, last_modified_on_or_after (string) format: YYYY-MM-DD, last_modified_before (string) format: YYYY-MM-DD, last_modified_on_or_before (string) format: YYYY-MM-DD
-```{
+```bash
+{
   "titles": {
     "32": 177
   }
@@ -69,7 +70,8 @@ params: date (string) format: YYYY-MM-DD, title (string), subtitle (string) form
 Structure JSON for a title
 https://www.ecfr.gov/api/versioner/v1/structure/{date}/title-{title}.json
 params: date (string) format: YYYY-MM-DD, title (string)
-```{
+```bash
+{
   "content_versions": [
     {
       "date": "2016-12-20",
@@ -83,12 +85,15 @@ params: date (string) format: YYYY-MM-DD, title (string)
       "subpart": null,
       "title": "32",
       "type": "section"
-    },```
+    },
+  ]
+}```
 
 Summary information on each title
 https://www.ecfr.gov/api/versioner/v1/titles.json
 params: none
-```{
+```bash
+{
   "titles": [
     {
       "number": 1,
@@ -97,7 +102,9 @@ params: none
       "latest_issue_date": "2024-05-17",
       "up_to_date_as_of": "2025-02-06",
       "reserved": false
-    },```
+    },
+  ]
+}```
 
 
 Array of all sections and appendices inside a title
