@@ -88,7 +88,8 @@ params: date (string) format: YYYY-MM-DD, title (string)
       "type": "section"
     },
   ]
-}```
+}
+```
 
 Summary information on each title
 https://www.ecfr.gov/api/versioner/v1/titles.json
@@ -105,7 +106,8 @@ params: none
       "reserved": false
     },
   ]
-}```
+}
+```
 
 
 Array of all sections and appendices inside a title
