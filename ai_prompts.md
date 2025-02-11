@@ -3,7 +3,7 @@ These are the initial prompts I used to get the code base setup.
 One hour on prompts and 15 hours working through reqs and adjustments with AI. 
 Five hours manually on code and deployment
 
-Could have done this manually without the architecture and design. I thought it was important to demonstrate my knowledge in technical architure. With more time, I would have added a service layer with supporting discovery, monitoring, logging, and scale. 
+Could have done this manually without the architecture and design. I thought it was important to demonstrate my knowledge in technical architecture. With more time, I would have added a service layer with supporting discovery, monitoring, logging, and scale. 
 
 I wanted to try and see how much I could get done with AI in the time alloted. Hopefully this is not viewed as a negative. 
 
