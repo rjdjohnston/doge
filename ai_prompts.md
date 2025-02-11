@@ -1,7 +1,5 @@
 ## Summary
-These are the initial prompts I used to get the code base setup. 
-One hour on prompts and 15 hours working through reqs and adjustments with AI. 
-Five hours manually on code and deployment
+These are the initial prompts I used to get the code base setup. One hour on prompts and 10 hours working through reqs and adjustments with AI. This was my first time using AI to help with development from the start. Five hours manually on code and deployment.
 
 Could have done this manually without the architecture and design. I thought it was important to demonstrate my knowledge in technical architecture. With more time, I would have added a service layer with supporting discovery, monitoring, logging, and scale. 
 
